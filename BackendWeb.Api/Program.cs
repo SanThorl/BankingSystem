@@ -1,5 +1,8 @@
+using BackendServices.Features.Account;
+
 var builder = WebApplication.CreateBuilder(args);
 
+#region Connection with blazorApp
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -9,6 +12,8 @@ builder.Services.AddCors(options =>
         .AllowAnyMethod();
     });
 });
+#endregion
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -21,6 +26,10 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
 },ServiceLifetime.Transient, ServiceLifetime.Transient);
+
+#region Add Services
+builder.Services.AddScoped<AccountService>();
+#endregion
 
 var app = builder.Build();
 
@@ -35,7 +44,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.UseCors();
+app.UseCors("AllowAll");
 app.MapControllers();
 
 app.Run();
