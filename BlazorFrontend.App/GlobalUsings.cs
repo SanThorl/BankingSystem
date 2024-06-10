@@ -1,1 +1,10 @@
-﻿
+﻿global using Blazored.LocalStorage;
+global using BlazorFrontend.App;
+global using Microsoft.AspNetCore.Components.Web;
+global using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+global using System.Text.Json;
+global using System.Text.Json.Serialization;
+global using Frontend.Api.Services;
+global using BlazorFrontend.App.Services;
+global using Frontend.Api.Feature.User;
+global using Refit;

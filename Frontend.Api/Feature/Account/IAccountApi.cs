@@ -7,6 +7,6 @@ namespace Frontend.Api.Feature.Account
         Task<AccountListResponseModel> GetAccounts();
 
         [Get("/api/account/{pageNo}/{pageSize}")]
-        Task<AccountListResponseModel> GetAccounts(int pageNo, int pageSize);
+        Task<AccountListResponseModel> GetAccountsList(int pageNo, int pageSize);
     }
 }

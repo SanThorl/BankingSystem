@@ -5,3 +5,6 @@ global using System.Text;
 global using System.Threading.Tasks;
 global using Models.Account;
 global using Refit;
+global using Blazored.LocalStorage;
+global using Frontend.Api.Services;
+global using System.Net.Http.Json;

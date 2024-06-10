@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+namespace Frontend.Api.Feature.Account;
 
-namespace Frontend.Api.Feature.Account
+public class AccountService
 {
-    internal class AccountService
+    private readonly ILocalStorageService _localStorageService;
+
+    public AccountService(ILocalStorageService localStorageService)
     {
+        _localStorageService = localStorageService;
     }
+
+    //public async Task<AccountListResponseModel> GetAccounts()
+    //{
+
+    //}
 }
