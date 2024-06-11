@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Models;
-
+﻿
 namespace BackendWeb.Api.Features;
 [ApiController]
 public class BaseController : ControllerBase

@@ -1,5 +1,6 @@
 ﻿@using System.Net.Http
 @using System.Net.Http.Json
+@using Frontend.Api
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Web
@@ -8,3 +9,11 @@
 @using Microsoft.JSInterop
 @using BlazorFrontend.App
 @using BlazorFrontend.App.Layout
+@using Frontend.Api.Feature.User
+@using Frontend.Api.Services
+@using MudBlazor
+
+@inject InjectService InjectService
+@inject HttpClientService HttpClientService
+@inject ApiService ApiService
+

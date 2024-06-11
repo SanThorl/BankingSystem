@@ -1,0 +1,86 @@
+﻿@page "/user-and-account/user"
+@{
+    int count = 0;
+}
+@if (_model is not null && _model.lstData is not null)
+{
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="py-3 mb-4">
+            <span class="text-muted fw-light">Users</span>
+        </h4>
+        <div class="card">
+            <div class="card-datatable table-responsive">
+                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                    <div class="card-header d-flex rounded-0 flex-wrap py-md-0 ">
+                        <div class="me-5 pe-5 p-3 d-flex gap-10">
+
+                            <div class="dt-buttons">
+                                <NavLink Class="dt-button add-new btn btn-primary" @* @onclick="@(() => InjectService.IntervalLoading())" *@  @onclick="@(() => InjectService.EnableLoading())" href="/user-and-account/user/register">
+                                    <span>
+                                        <i class="mdi mdi-plus me-0 me-sm-1"></i>
+                                        <span class="d-none d-sm-inline-block">New User</span>
+                                    </span>
+                                </NavLink>
+                                @* <GenerateButton OnClick="Generate" /> *@
+                            </div>
+                            <div id="DataTables_Table_0_filter" class="dataTables_filter ">
+                                <label>
+                                    <input type="search" class="form-control ms-0" placeholder="Search Order" aria-controls="DataTables_Table_0">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User Code</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Customer Id</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Mobile No</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">State Code</th>
+                            <th scope="col">Township Code</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in _model.lstData)
+                        {
+                            <tr>
+                                <td>@(++count + ((_model.PageSetting.PageNo - 1) * _model.PageSetting.PageSize))</td>
+                                <td>@item.UserCode</td>
+                                <td>@item.UserName</td>
+                                <td>@item.CustomerId</td>
+                                <td>@item.FullName</td>
+                                <td>@item.MobileNo</td>
+                                <td>@item.Email</td>
+                                <td>@item.Address</td>
+                                <td>@item.StateCode</td>
+                                <td>@item.TownshipCode</td>
+                                    <td>
+                                        <a class="btn btn-warning" href=@($"/user-and-account/user/edit/{item.UserCode}")>
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-danger btnDelete" @* @onclick="() => Delete(item.UserCode)" *@>
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row mx-1 d-flex justify-content-end pb-3">
+                <div class="col-sm-12 col-md-8 d-flex justify-content-end">
+                    <MudPagination SelectedChanged="PageChanged" ShowFirstButton="true" ShowLastButton="true" Count="@_model.PageSetting.PageCount" Class="mt-4" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

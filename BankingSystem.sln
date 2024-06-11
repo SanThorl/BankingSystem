@@ -13,13 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{126388
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackendServices", "BackendServices\BackendServices.csproj", "{AD24628F-327E-4AA4-9B1A-60D378FDCCE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{CD55E3A3-C82B-4147-8C37-62F72424A703}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{CD55E3A3-C82B-4147-8C37-62F72424A703}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapper", "Mapper\Mapper.csproj", "{EF3FCEF2-6A61-481B-8B73-5BA3408EAB4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mapper", "Mapper\Mapper.csproj", "{EF3FCEF2-6A61-481B-8B73-5BA3408EAB4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{83844A6E-39B1-4826-B0B5-E77B4879CA76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{83844A6E-39B1-4826-B0B5-E77B4879CA76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend.Api", "Frontend.Api\Frontend.Api.csproj", "{E2984398-484D-49BC-B880-589AA542CA1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend.Api", "Frontend.Api\Frontend.Api.csproj", "{E2984398-484D-49BC-B880-589AA542CA1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
