@@ -12,6 +12,8 @@ builder.Services.AddScoped<HttpClientService>();
 builder.Services.AddSingleton<Config>();
 
 builder.Services.AddRefitService<IUserApi>(builder.Configuration);
+builder.Services.AddRefitService<IAccountApi>(builder.Configuration);
+
 builder.Services.AddBlazoredLocalStorage(config =>
 {
     config.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;

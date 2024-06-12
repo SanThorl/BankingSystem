@@ -1,4 +1,5 @@
 using BackendServices.Features.Account;
+using BackendServices.Features.User;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +30,9 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 
 #region Add Services
 builder.Services.AddScoped<AccountService>();
+builder.Services.AddScoped<UserService>();
 #endregion
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

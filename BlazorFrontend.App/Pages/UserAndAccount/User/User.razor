@@ -15,13 +15,13 @@
                         <div class="me-5 pe-5 p-3 d-flex gap-10">
 
                             <div class="dt-buttons">
-                                <NavLink Class="dt-button add-new btn btn-primary" @* @onclick="@(() => InjectService.IntervalLoading())" *@  @onclick="@(() => InjectService.EnableLoading())" href="/user-and-account/user/register">
+                                <NavLink Class="dt-button add-new btn btn-primary" @* @onclick="@(() => InjectService.IntervalLoading())" *@ href="/user-and-account/user/register">
                                     <span>
                                         <i class="mdi mdi-plus me-0 me-sm-1"></i>
                                         <span class="d-none d-sm-inline-block">New User</span>
                                     </span>
                                 </NavLink>
-                                @* <GenerateButton OnClick="Generate" /> *@
+                                 @* <GenerateButton OnClick="Generate" /> *@
                             </div>
                             <div id="DataTables_Table_0_filter" class="dataTables_filter ">
                                 <label>
@@ -64,7 +64,7 @@
                                         <a class="btn btn-warning" href=@($"/user-and-account/user/edit/{item.UserCode}")>
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <button type="button" class="btn btn-danger btnDelete" @* @onclick="() => Delete(item.UserCode)" *@>
+                                        <button type="button" class="btn btn-danger btnDelete" @onclick="() => DeleteUser(item.UserCode)">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </td>

@@ -16,3 +16,5 @@ global using Frontend.Api.Feature.User;
 global using Refit;
 global using MudBlazor;
 global using MudBlazor.Services;
+global using Microsoft.AspNetCore.Components;
+global using System.Runtime.InteropServices;

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+namespace Frontend.Api.Feature.AdminUser;
 
-namespace Frontend.Api.Feature.AdminUser
+public class AdminUserService
 {
-    public class AdminUserService
-    {
-    }
 }

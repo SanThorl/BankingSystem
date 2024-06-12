@@ -48,7 +48,7 @@ public class UserService
             {
                 lstData = result.Select(x => x.Change()).ToList(),
                 Response = new MessageResponseModel(true, "Success"),
-                PagaSetting = new PageSettingModel(pageNo, pageSize, pageCount)
+                PageSetting = new PageSettingModel(pageNo, pageSize, pageCount)
             };
             return model;
         }

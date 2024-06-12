@@ -8,7 +8,7 @@ namespace Models.User;
 
 public class UserListResponseModel
 {
+    public PageSettingModel PageSetting { get; set; }
     public List<UserModel> lstData { get; set; }
     public MessageResponseModel Response { get; set; }
-    public PageSettingModel PagaSetting { get; set; }
 }
