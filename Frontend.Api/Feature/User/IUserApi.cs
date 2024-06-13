@@ -14,4 +14,7 @@ public interface IUserApi
 
     [Get("/api/user/{pageNo}/{pageSize}")]
     Task<UserListResponseModel> GetUsers(int pageNo, int pageSize);
+
+    [Get("/api/user/{userCode}")]
+    Task<UserResponseModel> GetUserByCode(string userCode);
 }

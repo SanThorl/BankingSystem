@@ -1,4 +1,5 @@
 ﻿using DatabaseServices.Models;
+using Frontend.Api.Services;
 using Models.User;
 using System;
 using System.Collections.Generic;
@@ -54,5 +55,21 @@ public class UserService
         }
     } 
     #endregion
+    public async Task<UserResponseModel> GetUserByCode(string userCode)
+    {
+        UserResponseModel model = new UserResponseModel();
+        var lst = await _localStorageService.GetList<TblUser>(EumService.Tbl_User.GetKeyName());
+        lst ??= [];
+        var item = lst.FirstOrDefault(x => x.UserCode == userCode);
+        if(item is null)
+        {
+            model.Response = new MessageResponseModel(false, "Invalid User Code");
+            return model;
+        }
+
+        model.Data = item.Change();
+        model.Response = new MessageResponseModel(true, "Success");
+        return model;
+    }
 }
 

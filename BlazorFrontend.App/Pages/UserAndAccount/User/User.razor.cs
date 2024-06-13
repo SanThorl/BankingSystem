@@ -36,10 +36,10 @@ public partial class User : ComponentBase
     }
 
     #region Dialog la lang ai hku
-    private async Task DeleteUser(string userCode)
-    {
-        var parameters = new DialogParameters<Dialog>();
-        parameters.Add(x => x.ContentText, "Sure to Delete?");
-    } 
+    //private async Task DeleteUser(string userCode)
+    //{
+    //    var parameters = new DialogParameters<Dialog>();
+    //    parameters.Add(x => x.ContentText, "Sure to Delete?");
+    //} 
     #endregion
 }
