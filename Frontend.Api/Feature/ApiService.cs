@@ -27,10 +27,22 @@ public class ApiService
             : await _userService.GetUserByCode(userCode);
     }
 
+    public async Task<UserResponseModel> CreateUser(UserRequestModel reqModel)
+    {
+        return _enumApiType == EnumApiType.Backend
+            ? await _iUserApi.CreateUser(reqModel)
+            : await _userService.
+    }
+
+    public async Task CreateUser(List<UserRequestModel> reqModel)
+    {
+        await _userService.CreateUser(reqModel);
+    }
+
     public async Task<UserResponseModel> DeleteUser(string userCode)
     {
-        return _enumApiType = EnumApiType.Backend
+        return _enumApiType == EnumApiType.Backend
             ? await _iUserApi.DeleteUser(userCode)
-            : await _userService.
+            : await _userService.DeleteUser(userCode);
     }
 }

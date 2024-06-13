@@ -18,6 +18,9 @@ public interface IUserApi
     [Get("/api/user/{userCode}")]
     Task<UserResponseModel> GetUserByCode(string userCode);
 
+    [Get("/api/user/")]
+    Task<UserRequestModel> CreateUser(UserRequestModel reqModel);
+
     [Delete("/api/user/{userCode}")]
     Task<UserResponseModel> DeleteUser(string userCode);
 }

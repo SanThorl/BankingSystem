@@ -20,4 +20,5 @@ public class InjectService
     {
         await _jsRuntime.InvokeVoidAsync("enableloading", false);
     }
+
 }

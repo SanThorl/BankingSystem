@@ -49,7 +49,12 @@ public partial class User : ComponentBase
         if (result.Canceled) return;
 
         var response = await ApiService.DeleteUser(userCode);
-        if()
+        if(result is not null)
+        {
+            await InjectService.EnableLoading();
+            await List(pageSetting.PageNo, pageSetting.PageSize);
+            await InjectService.DisableLoading();
+        }
     }
     #endregion
 }

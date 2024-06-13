@@ -55,6 +55,53 @@ public class UserService
     }
     #endregion
 
+    #region Create User + GenerateCode
+    public async Task<UserResponseModel> CreateUser(UserRequestModel reqModel)
+    {
+        var resModel = new TblUser()
+        {
+            UserName = reqModel.UserName,
+            FullName = reqModel.FullName,
+            Email = reqModel.Email,
+            Address = reqModel.Address,
+            MobileNo = reqModel.MobileNo,
+            Nrc = reqModel.Nrc,
+            StateCode = reqModel.StateCode,
+            TownshipCode = reqModel.TownshipCode
+        };
+
+        var itemCode = GenerateUserCode();
+        resModel.UserCode = itemCode;
+        await _db.AddAsync(resModel);
+        var result = await _db.SaveChangesAsync();
+
+        UserResponseModel model = new()
+        {
+            Data = resModel.Change(),
+            Response = new MessageResponseModel(true, "Successfully Saved.")
+        };
+        return model;
+    }
+
+    public string GenerateUserCode()
+    {
+        var lastCode = "AB000";
+        if (int.TryParse(lastCode.Substring(2), out int numericCode))
+        {
+            numericCode++;
+            while (IsAlreadyUsedCode("AB" + numericCode.ToString("D3")))
+                numericCode++;
+            return "AB" + numericCode.ToString("D3");
+        }
+        return "AB000";
+    }
+
+    private bool IsAlreadyUsedCode(string userCode)
+    {
+        return _db.TblUsers.Any(x => x.UserCode == userCode);
+    } 
+    #endregion
+
     #region Delete User
     public async Task<UserResponseModel> DeleteUser(string userCode)
     {
@@ -75,6 +122,6 @@ public class UserService
             Response = new MessageResponseModel(true, "Successfully Deleted.")
         };
         return model;
-    } 
+    }
     #endregion
 }

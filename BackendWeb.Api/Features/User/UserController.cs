@@ -43,6 +43,22 @@ namespace BackendWeb.Api.Features.User
             {
                 return InternalServerError(ex);
             }
+        }
+        #endregion
+
+        #region Create User
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(UserRequestModel reqModel)
+        {
+            try
+            {
+                var model = await _userService.CreateUser(reqModel);
+                return Ok(model);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         } 
         #endregion
 
