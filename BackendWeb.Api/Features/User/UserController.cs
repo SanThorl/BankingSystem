@@ -30,6 +30,7 @@ namespace BackendWeb.Api.Features.User
         }
         #endregion
 
+        #region Get User By Code
         [HttpGet("{userCode}")]
         public async Task<IActionResult> GetUserByCode(string userCode)
         {
@@ -38,10 +39,27 @@ namespace BackendWeb.Api.Features.User
                 var model = await _userService.GetUserByCode(userCode);
                 return Ok(model);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
-        }
+        } 
+        #endregion
+
+        #region Delete User
+        [HttpDelete("{userCode}")]
+        public async Task<IActionResult> DeleteUser(string userCode)
+        {
+            try
+            {
+                var model = await _userService.DeleteUser(userCode);
+                return Ok(model);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        } 
+        #endregion
     }
 }

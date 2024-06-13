@@ -11,7 +11,7 @@ namespace Frontend.Api.Services
         Tbl_TransactionHistory
     }
 
-    public static class EnumServiceExtentions
+    public static class EnumService
     {
         public static string GetKeyName(this EumService key)
         {

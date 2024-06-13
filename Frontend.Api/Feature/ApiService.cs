@@ -26,4 +26,11 @@ public class ApiService
             ? await _iUserApi.GetUserByCode(userCode)
             : await _userService.GetUserByCode(userCode);
     }
+
+    public async Task<UserResponseModel> DeleteUser(string userCode)
+    {
+        return _enumApiType = EnumApiType.Backend
+            ? await _iUserApi.DeleteUser(userCode)
+            : await _userService.
+    }
 }

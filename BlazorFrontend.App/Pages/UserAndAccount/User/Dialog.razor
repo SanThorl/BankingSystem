@@ -4,19 +4,18 @@
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="Cancel">No</MudButton>
-        <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="Submit">Yes</MudButton>
+        <MudButton Color="@Color.Primary" Variant="Variant.Filled" OnClick="Submit">Yes</MudButton>
     </DialogActions>
 </MudDialog>
 
-@code{
-    [CascadingParameter]
-    MudDialogInstance MudDialog { get; set; }
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
-    [Parameter]
-    public string ContentText { get; set; }
+    [Parameter] public string ContentText { get; set; }
 
-    [Parameter]
-    public Color Color { get; set; }
+    [Parameter] public string ButtonText { get; set; }
+
+    [Parameter] public Color Color { get; set; }
 
     void Submit() => MudDialog.Close(DialogResult.Ok(true));
     void Cancel() => MudDialog.Cancel();

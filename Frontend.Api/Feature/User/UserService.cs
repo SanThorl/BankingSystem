@@ -1,12 +1,4 @@
-﻿using DatabaseServices.Models;
-using Frontend.Api.Services;
-using Models.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Frontend.Api.Feature.User;
 
 public class UserService
@@ -53,15 +45,16 @@ public class UserService
             };
             return model;
         }
-    } 
+    }
     #endregion
+    #region Get User
     public async Task<UserResponseModel> GetUserByCode(string userCode)
     {
         UserResponseModel model = new UserResponseModel();
         var lst = await _localStorageService.GetList<TblUser>(EumService.Tbl_User.GetKeyName());
         lst ??= [];
         var item = lst.FirstOrDefault(x => x.UserCode == userCode);
-        if(item is null)
+        if (item is null)
         {
             model.Response = new MessageResponseModel(false, "Invalid User Code");
             return model;
@@ -71,5 +64,26 @@ public class UserService
         model.Response = new MessageResponseModel(true, "Success");
         return model;
     }
+    #endregion
+
+    #region Delete User
+    public async Task<UserResponseModel> DeleteUser(string userCode)
+    {
+        UserResponseModel model = new UserResponseModel();
+        var lst = await _localStorageService.GetList<TblUser>(EumService.Tbl_User.GetKeyName());
+        lst ??= [];
+        var item = lst.FirstOrDefault(x => x.UserCode == userCode);
+        if (item is null)
+        {
+            model.Response = new MessageResponseModel(false, "Invalid User Code.");
+            return model;
+        }
+
+        lst.Remove(item);
+        await _localStorageService.SetList<TblUser>(EumService.Tbl_User.GetKeyName(), lst);
+        model.Response = new MessageResponseModel(true, "Successfully Deleted");
+        return model;
+    } 
+    #endregion
 }
 

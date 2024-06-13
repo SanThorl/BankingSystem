@@ -13,3 +13,4 @@ global using Frontend.Api.Services;
 global using Refit;
 global using Blazored.LocalStorage;
 global using System.Net.Http.Json;
+global using DatabaseServices.Models;
