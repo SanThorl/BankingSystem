@@ -57,4 +57,20 @@ public partial class User : ComponentBase
         }
     }
     #endregion
+
+    private async Task Generate()
+    {
+        var random = new Random();
+        await InjectService.EnableLoading();
+        var lst = await HttpClientService.JsonToObjectList<UserRequestModel>("https://raw.githubusercontent.com/sannlynnhtun-coding/Banking-Management-System/main/User.json");
+        lst.ForEach(x =>
+        {
+            var randomNo = random.Next(1000000);
+            x.Nrc = $"13/TAYANA(N){ randomNo}";
+            x.StateCode = "MMR013";
+            x.TownshipCode = "MMR013040";
+        });
+        await ApiService.CreateUser(lst);
+        await List(pageSetting.PageNo, pageSetting.PageSize);
+    }
 }
