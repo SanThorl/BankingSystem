@@ -3,11 +3,11 @@ using System.ComponentModel;
 
 namespace Frontend.Api.Feature.User;
 
-public class UserService
+public class LocalStorageUserService
 {
     private readonly LocalStorageService _localStorageService;
 
-    public UserService(LocalStorageService localStorageService)
+    public LocalStorageUserService(LocalStorageService localStorageService)
     {
         _localStorageService = localStorageService;
     }

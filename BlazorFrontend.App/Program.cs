@@ -25,7 +25,7 @@ builder.Services.AddBlazoredLocalStorage(config =>
 
 builder.Services.AddScoped<LocalStorageService>();
 
-builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<LocalStorageUserService>();
 builder.Services.AddScoped<AccountService>();
 
 builder.Services.AddScoped<ApiService>();
