@@ -35,28 +35,28 @@ public partial class User : ComponentBase
         await List(pageSetting.PageNo, pageSetting.PageSize);
     }
 
-    #region Dialog la lang ai hku
-    private async Task DeleteUser(string userCode)
-    {
-        var parameters = new DialogParameters<Dialog>();
-        parameters.Add(x => x.ContentText,
-        "Sure to Delete?");
+    //#region Dialog la lang ai hku
+    //private async Task DeleteUser(string userCode)
+    //{
+    //    var parameters = new DialogParameters<Dialog>();
+    //    parameters.Add(x => x.ContentText,
+    //    "Sure to Delete?");
 
-        var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+    //    var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
 
-        var dialog = await DialogService.ShowAsync<Dialog>("Confirm", parameters, options);
-        var result = await dialog.Result;
-        if (result.Canceled) return;
+    //    var dialog = await DialogService.ShowAsync<Dialog>("Confirm", parameters, options);
+    //    var result = await dialog.Result;
+    //    if (result.Canceled) return;
 
-        var response = await ApiService.DeleteUser(userCode);
-        if(result is not null)
-        {
-            await InjectService.EnableLoading();
-            await List(pageSetting.PageNo, pageSetting.PageSize);
-            await InjectService.DisableLoading();
-        }
-    }
-    #endregion
+    //    var response = await ApiService.DeleteUser(userCode);
+    //    if(result is not null)
+    //    {
+    //        await InjectService.EnableLoading();
+    //        await List(pageSetting.PageNo, pageSetting.PageSize);
+    //        await InjectService.DisableLoading();
+    //    }
+    //}
+   // #endregion
 
     private async Task Generate()
     {

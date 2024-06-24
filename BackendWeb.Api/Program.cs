@@ -4,15 +4,27 @@ using BackendServices.Features.User;
 var builder = WebApplication.CreateBuilder(args);
 
 #region Connection with blazorApp
-builder.Services.AddCors(options =>
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowAll",
+//    policy => {
+//        policy.AllowAnyOrigin()
+//        .AllowAnyHeader()
+//        .AllowAnyMethod();
+//    });
+//});
+
+builder.Services.AddCors(opt =>
 {
-    options.AddPolicy("AllowAll",
-    policy => {
-        policy.AllowAnyOrigin()
-        .AllowAnyHeader()
-        .AllowAnyMethod();
-    });
+    opt.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:7135;http://localhost:5256")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
 });
+
 #endregion
 
 // Add services to the container.

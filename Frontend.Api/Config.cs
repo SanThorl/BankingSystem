@@ -6,7 +6,7 @@ namespace Frontend.Api
 {
     public class Config
     {
-        //public EnumApiType EnumApiType { get; set; } = EnumApiType.LocalStorage;
-        public EnumApiType EnumApiType { get; set; } = EnumApiType.Backend;
+        public EnumApiType EnumApiType { get; set; } = EnumApiType.LocalStorage;
+        //public EnumApiType EnumApiType { get; set; } = EnumApiType.Backend;
     }
 }

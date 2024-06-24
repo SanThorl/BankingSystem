@@ -123,6 +123,20 @@ public class LocalStorageUserService
     } 
     #endregion
 
+    public async Task  UpdateUser(UserRequestModel reqModel)
+    {
+        UserResponseModel resModel = new UserResponseModel();
+        var lst = await _localStorageService.GetList<TblUser>(EumService.Tbl_User.GetKeyName());
+        lst ??= [];
+        var item = lst.FirstOrDefault(x => x.UserCode == reqModel.UserCode);
+        var index = lst.FindIndex(x => item != null && x.UserCode == item.UserCode);
+        if(item is null)
+        {
+            resModel.Response = new MessageResponseModel(false, "User is not found!");
+            return resModel;
+        }
+    }
+
     #region Delete User
     public async Task<UserResponseModel> DeleteUser(string userCode)
     {

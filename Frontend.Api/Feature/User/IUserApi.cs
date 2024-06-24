@@ -21,6 +21,9 @@ public interface IUserApi
     [Post("/api/user/create")]
     Task<UserResponseModel> CreateUser(UserRequestModel reqModel);
 
+    [Put("/api/user/{userCode}")]
+    Task<UserResponseModel> UpdateUser(UserRequestModel reqModel);
+
     [Delete("/api/user/delete{userCode}")]
     Task<UserResponseModel> DeleteUser(string userCode);
 }

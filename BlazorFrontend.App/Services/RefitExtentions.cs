@@ -8,7 +8,7 @@ public static class RefitExtentions
     public static IHttpClientBuilder AddRefitService<T>(this IServiceCollection services, IConfiguration configuration) where T : class
     {
         var httpClientBuilder = services.AddRefitClient<T>()
-            .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://localhost:44376"));
+            .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://localhost:7276"));
         return httpClientBuilder;
     }
 }
