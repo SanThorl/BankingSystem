@@ -123,11 +123,10 @@ public class LocalStorageUserService
     } 
     #endregion
 
-    public async Task  UpdateUser(UserRequestModel reqModel)
+    public async Task<UserResponseModel>  UpdateUser(UserRequestModel reqModel)
     {
         UserResponseModel resModel = new UserResponseModel();
         var lst = await _localStorageService.GetList<TblUser>(EumService.Tbl_User.GetKeyName());
-        lst ??= [];
         var item = lst.FirstOrDefault(x => x.UserCode == reqModel.UserCode);
         var index = lst.FindIndex(x => item != null && x.UserCode == item.UserCode);
         if(item is null)
@@ -135,6 +134,22 @@ public class LocalStorageUserService
             resModel.Response = new MessageResponseModel(false, "User is not found!");
             return resModel;
         }
+
+        item.UserCode = reqModel.UserCode;
+        item.UserName = reqModel.UserName;
+        item.FullName = reqModel.FullName;
+        item.Email = reqModel.Email;
+        item.Nrc = reqModel.Nrc;
+        item.MobileNo = reqModel.MobileNo;
+        item.Address = reqModel.Address;
+        item.StateCode = reqModel.StateCode;
+        item.TownshipCode = reqModel.TownshipCode;
+        lst[index] = item;
+
+        await _localStorageService.SetList(EumService.Tbl_User.GetKeyName(), lst);
+        resModel.Data = item.Change();
+        resModel.Response = new MessageResponseModel(true, "Successfully Updated.");
+        return resModel;
     }
 
     #region Delete User

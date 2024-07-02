@@ -102,6 +102,16 @@ public class UserService
     } 
     #endregion
 
+    //public async Task<UserResponseModel> UpdateUser(UserRequestModel reqModel)
+    //{
+    //    UserResponseModel resModel = new UserResponseModel();
+    //    var item = await _db.TblUsers.AsNoTracking().FirstOrDefaultAsync(x => x.UserCode == reqModel.UserCode);
+    //    if(item is null)
+    //    {
+    //        throw new Exception("Invalid User!");
+    //    }
+    //}
+
     #region Delete User
     public async Task<UserResponseModel> DeleteUser(string userCode)
     {
