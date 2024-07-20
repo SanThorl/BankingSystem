@@ -1,5 +1,6 @@
 ﻿
 using BackendServices.Features.User;
+using Microsoft.VisualBasic;
 
 namespace BackendWeb.Api.Features.User
 {
@@ -53,6 +54,22 @@ namespace BackendWeb.Api.Features.User
             try
             {
                 var model = await _userService.CreateUser(reqModel);
+                return Ok(model);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+        #endregion
+
+        #region  Update  User Infomation
+        [HttpPut("{userCode}")]
+        public async Task<IActionResult> UpdateUser([FromBody] UserRequestModel reqModel)
+        {
+            try
+            {
+                var model = await _userService.UpdateUser(reqModel);
                 return Ok(model);
             }
             catch (Exception ex)

@@ -99,18 +99,43 @@ public class UserService
     private bool IsAlreadyUsedCode(string userCode)
     {
         return _db.TblUsers.Any(x => x.UserCode == userCode);
-    } 
+    }
     #endregion
 
-    //public async Task<UserResponseModel> UpdateUser(UserRequestModel reqModel)
-    //{
-    //    UserResponseModel resModel = new UserResponseModel();
-    //    var item = await _db.TblUsers.AsNoTracking().FirstOrDefaultAsync(x => x.UserCode == reqModel.UserCode);
-    //    if(item is null)
-    //    {
-    //        throw new Exception("Invalid User!");
-    //    }
-    //}
+    public async Task<UserResponseModel> UpdateUser(UserRequestModel reqModel)
+    {
+        UserResponseModel resModel = new UserResponseModel();
+        var item = await _db.TblUsers.AsNoTracking().FirstOrDefaultAsync(x => x.UserCode == reqModel.UserCode);
+        if (item is null)
+        {
+            throw new Exception("Invalid User!");
+        }
+        if (string.IsNullOrEmpty(reqModel.UserCode)) throw new Exception("User Code is required to be included!");
+        if(string.IsNullOrEmpty(reqModel.UserName)) throw new Exception("UserName is required.");
+        if (string.IsNullOrEmpty(reqModel.FullName)) throw new Exception("FullName is required.");
+        if (string.IsNullOrEmpty(reqModel.Nrc)) throw new Exception("Nrc is required.");
+        if (string.IsNullOrEmpty(reqModel.Address)) throw new Exception("Address is required.");
+        if (string.IsNullOrEmpty(reqModel.Email)) throw new Exception("Email is required.");
+
+        item.UserCode = reqModel.UserCode;
+        item.UserName = reqModel.UserName;
+        item.FullName = reqModel.FullName;
+        item.Nrc = reqModel.Nrc;
+        item.Address = reqModel.Address;
+        item.Email = reqModel.Email;
+
+        _db.Entry(item).State = EntityState.Modified;
+        _db.TblUsers.Update(item);
+        //var result = await _db.SaveChangesAsync();
+        await _db.SaveChangesAsync();
+
+        resModel = new UserResponseModel()
+        {
+            Data = item.Change(),
+            Response = new MessageResponseModel(true, "User information have updated successfully.")
+        };
+        return resModel;
+    }
 
     #region Delete User
     public async Task<UserResponseModel> DeleteUser(string userCode)
